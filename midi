@@ -1,0 +1,21 @@
+#!/bin/bash
+aseqdump -p "P027" | \
+while IFS=" ," read src ev1 ev2 ch label1 data1 label2 data2 rest; do
+    case "$ev1 $ev2 $data1" in
+        "Note on 42" ) xdotool search --onlyvisible --class "google-chrome" windowfocus windowraise key ctrl+1 key space ;;
+	"Note on 40" ) amixer -D pulse set Master toggle ;;
+	"Note off 40" ) amixer -D pulse set Master toggle ;;
+	"Note on 41" ) amixer -D pulse set Master toggle ;;
+	"Note on 43" ) xdotool key Left ;;
+	"Note on 44" ) xdotool key Right ;;
+	"Note on 39" ) amixer -D pulse sset Master 5%+ ;;
+	"Note on 36" ) amixer -D pulse sset Master 5%- ;;
+	"Note on 37" ) xdotool search --onlyvisible --class "google-chrome" windowfocus windowraise && xdotool key ctrl+Tab ;;
+	"Note on 60" ) xdotool key Page_Up ;;
+	"Note on 54" ) xdotool key Page_Down ;;
+	"Note on 59" ) xdotool key Up ;;
+	"Note on 53" ) xdotool key Down ;;
+	"Note on 56" ) xdotool key Home ;;
+	"Note on 57" ) xdotool key End ;;
+   esac
+done
